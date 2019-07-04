@@ -1,0 +1,166 @@
+
+@menu-dark-title: #001529;
+@menu-dark-active-bg: #000c17;
+@layout-sider-background: #001529;
+
+@primary-color          : #2d8cf0;
+@info-color             : #2db7f5;
+@success-color          : #19be6b;
+@warning-color          : #ff9900;
+@error-color            : #ed4014;
+@link-color             : #2D8cF0;
+.color-primary{ color: @primary-color;}
+.color-success{ color: @success-color;}
+.color-info{ color: @info-color;}
+.color-warning{ color: @warning-color;}
+.color-error{ color: @error-color;}
+.color-link{ color: @link-color;}
+.color-grey{ color: @subsidiary-color;}
+
+.float-left{ float: left;}
+.float-right{ float: right;}
+.text-center{ text-align: center;}
+.text-right{ text-align: right;}
+
+.relative{position: relative;}
+.hide, .hidden, [hidden]{display: none;}
+
+/*全站公共样式*/
+.container{  /*白色背景容器*/
+  min-width: 800px;
+  background: #fff;
+  padding: 15px;
+  margin: -5px;
+  border-radius: 3px;
+  border: 1px solid #f0f0f0;
+}
+.search-bar{  /*搜索栏*/
+  margin-bottom: 15px;
+}
+.search-bar button + button {
+  margin-left: 5px;
+}
+.tool-bar{
+  margin: 15px 0 0;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+
+/*表单元素*/
+.ivu-date-picker{
+  width: 100%;
+}
+.ivu-radio-group-button.background .ivu-radio-wrapper-checked{
+  background: #57a3f3;
+  color: #fff;
+}
+.ivu-radio-group-button.background .ivu-radio-wrapper-checked:hover{
+  color: #fff;
+}
+/**/
+.ivu-modal-header b{font-size: 14px;}
+
+/*当需要重置滚动条时 添加class“scrollbar”*/
+.scrollbar::-webkit-scrollbar { width: 6px; height: 6px;}
+.scrollbar::-webkit-scrollbar-track { background-color: #F1F1F1; border-left: 2px solid transparent;}
+.scrollbar::-webkit-scrollbar-thumb { background-color: #c2c6cc; border-left: 2px solid transparent; border-radius: 8px}
+.scrollbar::-webkit-scrollbar-thumb:window-inactive { background: rgba(0, 0, 0, .1); border: none;}
+
+
+/*表格*/
+.table{
+  margin-bottom: 15px;
+}
+.table .table-opt + .table-opt{
+  margin-left: 5px;
+}
+
+/*表单提交按钮框*/
+.form-submit{
+  margin: 40px auto 30px;
+}
+.form-submit button{
+  min-width: 80px;
+}
+.form-submit button + button{
+  margin-left: 15px;
+}
+.no-wrap{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*数据回显*/
+.form-wrap{
+  margin-bottom: 20px;
+  .detail-wrap{
+    margin-bottom: 10px;
+  }
+}
+
+/*用于可拖动列表数据的类似表格展示*/
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  cursor: default;
+  border-bottom: 1px solid #f0f0f0;
+  > div {
+    padding: 4px;
+    box-sizing: border-box;
+  }
+}
+.flex-header{
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  background: #f7f8f9;
+  cursor: text;
+  > div{
+    white-space: nowrap;
+  }
+}
+.sortable-chosen{
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+.sortable-ghost{
+  border: 1px solid transparent;
+  box-shadow: 0 0 5px 2px #f0f0f0;
+}
+
+.default-list-ul{
+  list-style: none;
+  padding: 0;
+  > li {
+    display: block;
+    padding: 8px 8px;
+    font-size: 14px;
+    transition: all 0.3s;
+    cursor: pointer;
+    user-select: none;
+    background: #f7f9ff;
+  }
+  > li.active, >li:hover {
+    background: #2d8cf0;
+    color: #fff;
+  }
+  >li + li {
+    margin-top: 5px;
+  }
+}
+
+
+/**/
+.icon-opt{
+  cursor: pointer;
+  font-size: 18px;
+  + .icon-opt{
+    margin-left: 10px;
+  }
+}
+.sec-tit {
+  border-left: 3px solid #ff9900;
+  padding-left: 10px;
+  line-height: 1;
+}

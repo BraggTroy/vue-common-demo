@@ -19,7 +19,15 @@ export default function (params) {
     // readyState == 4说明请求已完成
     if (xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304) {
       // 从服务器获得数据
-      config.success(xhr.responseText)
+      var type = xhr.getResponseHeader("Content-Type")
+      if (type.match('application/json')) {
+        // json
+        console.log('json')
+        config.success(JSON.parse(xhr.responseText))
+      } else {
+        console.log('text')
+        config.success(xhr.responseText)
+      }
     } else {
       config.error()
     }

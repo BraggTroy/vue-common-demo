@@ -5,7 +5,7 @@
   -->
   <div class="table-box">
     <slot name="search">
-      <Row class="search-bar" :gutter="15">
+      <Row class="search-bar" :gutter="15" style="margin-bottom: 15px;">
         <i-col :span="5" v-for="s in search">
           <Input v-if="!s.type || s.type === 'input'" v-model="defaultSearch[s.key]" :placeholder="s.placeholder" clearable></Input>
 
@@ -20,7 +20,7 @@
     <!--默认插槽，显示表格主体，表格纯手打-->
     <!--当不自定义表格的时候，则根据接口返回的数据，自动生成-->
     <slot>
-      <Table :columns="defaultColumns" :data="defaultData" class="table"></Table>
+      <Table :columns="defaultColumns" :data="defaultData" class="table" style="margin-bottom: 15px;"></Table>
     </slot>
 
     <Page :total="total" :current.sync="currentPage" :page-size="pageSize" :page-size-opts="[10, 20, 50, 100]"
@@ -55,7 +55,7 @@
       },
       search: {
         type: Array,
-        default: []
+        default: () => {return []}
       }
     },
     data () {
@@ -97,6 +97,33 @@
     },
     methods: {
       getTableList () {
+        if (!this.actionPath) {
+          return false
+        } else {
+          this.ajax({
+            method: this.method,
+            url: this.url,
+            success: (res) => {
+              this.total = res.Count
+              // 防止删除正好当前页删完了，当时page没有主动触发，导致page和total不同步
+              if (res.Count > 0 && !res.Data) {
+                this.currentPage = this.currentPage - 1 || 1
+              } else {
+                this.$emit('on-success', res)
+              }
+              // 处理默认的表格数据
+              if (res.Code === 0) {
+                if (!this.$slots.default) {
+                  let result = res.Data || []
+                  this.defaultColumns = this.getColumnsItem(result[0])
+                  this.defaultData = result
+                }
+              }
+            }
+          })
+        }
+      },
+      getTableListDefault () {
         if (!this.actionPath) {
           return false
         } else {
